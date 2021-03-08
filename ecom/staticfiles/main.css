@@ -1,0 +1,26 @@
+form .helptext {
+    font-size: 12px;
+    color: rgb(22, 236, 22);
+}
+
+form ul:not(.errorlist) {
+    display: none;
+}
+
+.newsletter-wrapper {
+    padding: 50px 20px;
+    text-align: center;
+    background: #2272b3;
+}
+
+    .newsletter-wrapper .notification {
+        margin-top: 20px;
+    }
+
+    .newsletter-wrapper .field.has-addons {
+        justify-content: center;
+    }
+
+.notification.space-below {
+    margin-bottom: 20px;
+}

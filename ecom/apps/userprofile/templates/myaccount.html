@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+</head>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_responsive.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/blog_single_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/blog_single_responsive.css' %}">
+
+</head>
+
+
+
+	<!-- Single Blog Post -->
+
+	<div class="single_post">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="single_post_title"></div>
+					<div class="single_post_text">
+						
+
+						<div class="single_post_quote text-center">
+							
+							<div class="quote_text"></div>
+                            <div calss="container">
+    <h1 class="title">Корисник</h1>
+
+    <a href="{% url 'logout' %}" class="btn btn-primary shadow-none">Одјава</a>
+
+    <hr>
+
+    <h2 class="subtitle">Информации за корисникот</h2>
+
+    <p><strong>Име: </strong>{{ request.user.get_full_name }}</p>
+    <p><strong>Емаил: </strong>{{ request.user.email }}</p>
+    <p><strong>Адреса: </strong>{{ request.user.userprofile.address }}</p>
+    <p><strong>П.Б Град: </strong>{{ request.user.userprofile.zipcode }} {{ request.user.userprofile.place }}</p>
+    <p><strong>Телефон: </strong>{{ request.user.userprofile.phone }}</p> 
+
+    <hr>
+    
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="blog">
+    <div class="container">
+        
+        <div class="row">
+            
+            <div class="col">
+                
+                <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+
+                    
+    
+
+    {% for order in request.user.orders.all %}
+        <article class="message is-light">
+            <div class="message-header">
+                <p>{{ order.created_at }}</p>
+                <p><strong>Статус: </strong>{{ order.status }}</p>
+            </div>
+
+            <div class="message-body">
+                <table class="table is-striped is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Производ</th>
+                            <th>Количина</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in order.items.all %}
+                            <tr>
+                                <td>{{ item.product.title }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td>Вкупна цена</td>
+                            <td>{{ order.get_total_quantity }}</td>
+                            <td>{{ order.get_total_price }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </article>
+    {% empty %}
+        <p>Немате нарачки</p>
+    {% endfor %}
+
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/blog_single_custom.js' %}"></script>
+    <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+
+</body>
+{% endblock %} 

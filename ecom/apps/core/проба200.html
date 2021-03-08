@@ -1,0 +1,482 @@
+<!-- Recently Viewed -->
+
+<div class="viewed">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="viewed_title_container">
+                    <h3 class="viewed_title">Последни прегледи</h3>
+                    <div class="viewed_nav_container">
+                        <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+
+                <div class="viewed_slider_container">
+                    
+                    <!-- Recently Viewed Slider -->
+
+                    <div class="owl-carousel owl-theme viewed_slider">
+                    
+                        {% for rw in recently_viewed_products %}
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="{{ rw.get_thumbnail }}" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">{{ rw.price }}</div>
+                                    <div class="viewed_name"><a href="{% url 'product_detail' rw.category.slug rw.slug %}">{{ rw.title }}</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    
+                                    <li class="item_mark item_new"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Recently Viewed -->
+
+<div class="viewed">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="viewed_title_container">
+                    <h3 class="viewed_title">Recently Viewed</h3>
+                    <div class="viewed_nav_container">
+                        <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+
+                <div class="viewed_slider_container">
+                    
+                    <!-- Recently Viewed Slider -->
+
+                    <div class="owl-carousel owl-theme viewed_slider">
+                        
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_1.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$225<span>$300</span></div>
+                                    <div class="viewed_name"><a href="#">Beoplay H7</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_2.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$379</div>
+                                    <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_3.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$225</div>
+                                    <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_4.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$379</div>
+                                    <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_5.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$225<span>$300</span></div>
+                                    <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Recently Viewed Item -->
+                        <div class="owl-item">
+                            <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="viewed_image"><img src="images/view_6.jpg" alt=""></div>
+                                <div class="viewed_content text-center">
+                                    <div class="viewed_price">$375</div>
+                                    <div class="viewed_name"><a href="#">Speedlink...</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-25%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+----------------
+  <!-- Characteristics -->
+    
+  <div class="characteristics">
+    <div class="container">
+        <div class="row">
+
+           <!-- Char. Item -->
+           <div class="col-lg-3 col-md-6 char_col">
+                
+            <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                <div class="char_icon"><img src="{% static 'images/char_1.png' %}" alt=""></div>
+                <div class="char_content">
+                    <div class="char_title">БЕСПЛАТНА ИСПОРАКА</div>
+                    <div class="char_subtitle">ЗА СИТЕ НАРАЧКИ НАД 1200 ДЕНАРИ</div>
+                </div>
+            </div>
+        </div>
+
+         
+
+
+
+   <!-- Popular Categories -->
+
+<div class="popular_categories">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="popular_categories_content">
+                <div class="popular_categories_title">Популарни производи</div>
+                <div class="popular_categories_slider_nav">
+                    <div class="popular_categories_prev popular_categories_nav"><i class="fas fa-angle-left ml-auto"></i></div>
+                    <div class="popular_categories_next popular_categories_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Popular Categories Slider -->
+
+        <div class="col-lg-9">
+          
+            <div class="popular_categories_slider_container">
+                
+                <div class="owl-carousel owl-theme popular_categories_slider">
+                    {% for pp in popular_products %}
+
+                
+
+                    <!-- Popular Categories Item -->
+                    <div class="owl-item">
+                        
+                        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+                            <div class="popular_category_image"><img src="{{ pp.get_thumbnail }}" alt=""></div>
+                            <div class="popular_category_text"><a href="{% url 'product_detail' pp.category.slug pp.slug %}">{{ pp.title }}</a></div>
+                            
+                            
+                        </div>
+                       
+                    </div>
+                    {% endfor %}
+
+                </div>
+               
+            </div>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Banner -->
+
+<div class="banner_2">
+    <div class="banner_2_background" style="background-image:url({% static 'images/banner_2_background.jpg' %})"></div>
+    <div class="banner_2_container">
+        <div class="banner_2_dots"></div>
+        <!-- Banner 2 Slider -->
+
+        <div class="owl-carousel owl-theme banner_2_slider">
+            {% for ppp in popular_products %}
+
+            <!-- Banner 2 Slider Item -->
+            <div class="owl-item">
+                <div class="banner_2_item">
+                    <div class="container fill_height">
+                        <div class="row fill_height">
+                            <div class="col-lg-4 col-md-6 fill_height">
+                                <div class="banner_2_content">
+                                    <div class="banner_2_category">{{ ppp.price }}</div>
+                                    <div class="banner_2_title">{{ ppp.title }}</div>
+                                    <div class="banner_2_text">{{ ppp.description }}</div>
+                                    
+                                    <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-8 col-md-6 fill_height">
+                                <div class="banner_2_image_container">
+                                    <div class="banner_2_image"><img src="{{ ppp.get_thumbnail }}" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>			
+                </div>
+            </div>
+            {% endfor %}
+
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Hot New Arrivals -->
+
+<div class="new_arrivals">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="tabbed_container">
+                    <div class="tabs clearfix tabs-right">
+                        <div class="new_arrivals_title">Најнови производи</div>
+                        <ul class="clearfix">
+                            <li class="active">PrEsTo</li>
+                            
+                        </ul>
+                        <div class="tabs_line"><span></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9" style="z-index:1;">
+
+                            <!-- Product Panel -->
+                            <div class="product_panel panel active">
+                                
+                                <div class="arrivals_slider slider">
+                                    
+
+                                  
+
+                                    <!-- Slider Item -->
+                                    {% for feat in products %}
+                                   
+                                    <div class="arrivals_slider_item">
+                                       
+                                        
+                                       
+                                        <div class="border_active"></div>
+                                        
+                                        <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ feat.get_thumbnail }}" alt=""></div>
+                                            <div class="product_content">
+                                                <div class="product_price">{{ feat.price }}</div>
+                                                <div class="product_name"><div><a href="{% url 'product_detail' feat.category.slug feat.slug %}">{{ feat.title }}</a></div></div>
+                                                <div class="product_extras">
+                                                    
+                                                    <button class="button banner_2_button"><a href="{% url 'product_detail' feat.category.slug feat.slug %}">Детали</a></button>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            
+                                            <ul class="product_marks">
+                                                
+                                                <li class="product_mark product_new">Ново</li>
+                                            </ul>
+                                          
+                                           
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                                
+                            </div>
+
+                         
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+        </div>
+    </div>		
+
+
+
+
+<!-- Recently Viewed -->
+
+<div class="viewed">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="viewed_title_container">
+                <h3 class="viewed_title">Recently Viewed</h3>
+                <div class="viewed_nav_container">
+                    <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                    <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <div class="viewed_slider_container">
+                
+                <!-- Recently Viewed Slider -->
+
+                <div class="owl-carousel owl-theme viewed_slider">
+                    
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="images/view_1.jpg" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$225<span>$300</span></div>
+                                <div class="viewed_name"><a href="#">Beoplay H7</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="images/view_2.jpg" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$379</div>
+                                <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="images/view_3.jpg" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$225</div>
+                                <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="images/view_4.jpg" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$379</div>
+                                <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="{% static 'images/view_5.jpg' %}" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$225<span>$300</span></div>
+                                <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Item -->
+                    <div class="owl-item">
+                        <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="viewed_image"><img src="images/view_6.jpg" alt=""></div>
+                            <div class="viewed_content text-center">
+                                <div class="viewed_price">$375</div>
+                                <div class="viewed_name"><a href="#">Speedlink...</a></div>
+                            </div>
+                            <ul class="item_marks">
+                                <li class="item_mark item_discount">-25%</li>
+                                <li class="item_mark item_new">new</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+</body>
+

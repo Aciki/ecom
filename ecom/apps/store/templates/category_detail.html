@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.title }} | {% endblock %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_responsive.css' %}">
+    </head>
+<!-- Shop -->
+
+<div class="shop">
+    <div class="container">
+        <div class="main_nav_menu ml-auto">
+            <ul class="standard_dropdown main_nav_dropdown">
+                
+                
+                {% if category.parent %}
+                <li><a href="{% url 'category_detail' category.parent.slug %}">{{ category.parent.title }}<i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="{% url 'category_detail' category.slug %}">{{ category.title }}<i class="fas fa-chevron-down"></i></a></li>
+                {% endif %}
+                
+                {% for subcategory in category.children.all %}
+                <li><a href="{% url 'category_detail' subcategory.slug %}">{{ subcategory.title }}<i class="fas fa-chevron-down"></i></a></li>
+                
+                {% endfor %}
+                
+            </ul>
+            
+            
+        
+        
+        
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-3">
+
+                <!-- Shop Sidebar -->
+                <div class="shop_sidebar">
+                    <div class="sidebar_section">
+                        
+                        
+                            
+                    </div>
+                    
+                    
+                </div>
+
+            </div>
+
+            <div class="col-lg-9">
+                
+                <!-- Shop Content -->
+
+                <div class="shop_content">
+                    <div class="shop_bar clearfix">
+                        <div class="shop_product_count"><span>{{ page_obj.all.count }}</span>  производи </div>
+                       
+                    </div>
+
+                    <div class="product_grid">
+                        
+                        <div class="product_grid_border"></div>
+                        {% for prod in page_obj.object_list %}
+                        <!-- Product Item -->
+                        <div class="product_item is_new">
+                            <div class="product_border"></div>
+                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ prod.get_thumbnail }}" alt=""></div>
+                            <div class="product_content">
+                                <br>
+                                <div class="product_price">{{ prod.price }} Денари</div>
+                                <div class="product_name"><div><a href="{% url 'product_detail' prod.category.slug prod.slug %}" tabindex="0">{{ prod.title }}</a></div></div>
+                                <div class="button banner_button"><a href="{% url 'product_detail' prod.category.slug prod.slug %}">Детали</a></div>
+                            </div>
+                            
+                            
+                        </div>
+                        {% endfor %}
+
+                        
+
+                        <!-- Product Item -->
+                    
+
+                    </div>
+                    <div class="shop_page_nav d-flex flex-row">
+                        
+                        <ul class="page_nav d-flex flex-row">
+                            {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+                            {% endif %}
+                            {% if page_obj.number|add:'-4' > 1 %}
+                            <li><a href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+                            {% endif %}
+
+                            {% for i in page_obj.paginator.page_range %}
+                            {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                            <li><a href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+                            {% endif %}
+                            {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                        
+                    </div>
+                       
+                    </div>
+
+                    <!-- Shop Page Navigation -->
+
+                
+                </div>
+
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/shop_custom.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Vi Blagodarime{% endblock %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/blog_single_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/blog_single_responsive.css' %}">
+
+</head>
+<body>
+{% block content %}
+   
+
+    <div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/blog_single_background.jpg' %}" data-speed="0.8"></div>
+	</div>
+
+	<!-- Single Blog Post -->
+
+	<div class="single_post">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="single_post_title"></div>
+					<div class="single_post_text">
+						
+
+						<div class="single_post_quote text-center">
+							<div class="quote_image"><img src="{% static 'images/quote.png' %}" alt=""></div>
+							<div class="quote_text"></div>
+                            <div calss="container">
+                                <h1 class="title">Ви благодариме</h1>
+                        
+                                <p>Ви благодариме на вашата нарачка</p>
+                            </div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Blog Posts -->
+
+	<div class="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+
+						<!-- Blog post -->
+						<div class="blog_post">
+							<div class="blog_image" style="background-image:url({% static 'images/blog_4.jpg' %})"></div>
+							
+							
+						</div>
+
+						
+
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+
+    <script src="{% static 'js/blog_single_custom.js' %}"></script>
+    <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+
+</body>
+{% endblock %} 

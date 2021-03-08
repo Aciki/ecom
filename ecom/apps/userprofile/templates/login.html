@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/shop_responsive.css' %}">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<div class="columns">
+    <div class="column is-6 is-offset-3">
+        <h1 class="title">НАЈАВА</h1>
+
+        <form method="post" action=".">
+            {% csrf_token %}
+    
+            <input type="hidden" name="next" value="{{ next }}">
+    
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                <label>Корисничко име:</label>
+    
+                <p class="control has-icons-left">
+                    <input type="text" class="input" name="username" id="id_username"placeholder="вашето корисничко име">
+                    <span class="icon is-small is-left">
+                        <i class="far fa-user"></i>
+                      </span>
+                </p>
+            </div>
+    
+            <div class="field">
+                <label>Лозинка:</label>
+                
+                <p class="control has-icons-left">
+                    <input type="password" class="input" name="password" id="id_password"placeholder="Вашата лозинка:">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </p>
+            </div>
+        </p>
+    
+            {% if form.errors %}
+                <div class="notification is-danger">
+                    Вашето корисничко име и лозинка не се совпаѓаат . Ве молиме обидете се повторно
+                </div>
+            {% endif %}
+    
+            <div class="field">
+                <div class="control">
+                    <button class="button is-info">НАЈАВА</button>
+                </div>
+            </div>
+            <br>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success"><a href="{% url 'reset_password' %}">Заборавена лозинка</a></button>
+                </div>
+            </div>
+           
+        </form>
+        
+
+    </div>
+</div>
+{% endblock %}
+{% url 'reset_password' %}

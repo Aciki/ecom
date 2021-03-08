@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search | {% endblock %}
+
+{% block content %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_responsive.css' %}">
+
+
+
+	<!-- Shop -->
+
+	<div class="shop">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+
+					<!-- Shop Sidebar -->
+					<div class="shop_sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">Categories</div>
+							<ul class="sidebar_categories">
+                                {% for category in menu_categories %}
+                                {% if not category.children.all %}
+                                <li><a href="{% url 'category_detail' category.slug %}">{{ category.title }}</a></li>
+                                {% endif %}
+                                
+                                {% for subcategory in category.children.all %}
+                                <li><a href="{% url 'category_detail' subcategory.slug %}">{{ subcategory.title }}</a></li>
+                                
+                                {% endfor %}
+                                {% endfor %}
+						</div>
+						<div class="sidebar_section filter_by_section">
+							<div class="sidebar_title">Filter By</div>
+							<div class="sidebar_subtitle">Price</div>
+							<div class="filter_price">
+								<div id="slider-range" class="slider_range"></div>
+								<p>Range: </p>
+								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+				<div class="col-lg-9">
+					
+					<!-- Shop Content -->
+
+					<div class="shop_content">
+						<div class="shop_bar clearfix">
+							<div class="shop_product_count"><span>{{ products.all.count }}</span> производи најдени</div>
+							<div class="shop_sorting" name="sorting">
+								<span>Sort by:</span>
+								<ul>
+									<li>
+										<span class="sorting_text">highest rated<i class="fas fa-chevron-down"></span></i>
+										<ul>
+											<li class="shop_sorting_button" data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
+											<li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name</li>
+											<li class="shop_sorting_button"data-isotope-option='"-price"{% if sorting == '-price' %} selected{% endif %}'>price</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<!-- <div class="control">
+								<div class="select">
+									<select name="sorting">
+										<option value="-date_added"{% if sorting == '-date_added' %} selected{% endif %}>Newest first</option>
+										<option value="price"{% if sorting == 'price' %} selected{% endif %}>Price low-high</option>
+										<option value="-price"{% if sorting == '-price' %} selected{% endif %}>Price high-low</option>
+									</select>
+								</div> -->
+						</div>
+
+						<div class="product_grid">
+                            
+							<div class="product_grid_border"></div>
+                            {% for prod in page_obj1.object_list %}
+							<!-- Product Item -->
+							<div class="product_item is_new">
+								<div class="product_border"></div>
+								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ prod.get_thumbnail }}" alt=""></div>
+								<div class="product_content">
+                                    <br>
+									<div class="product_price">{{ prod.price }} Денари</div>
+									<div class="product_name"><div><a href="{% url 'product_detail' prod.category.slug prod.slug %}" tabindex="0">{{ prod.title }}</a></div></div>
+                                    <div class="button banner_button"><a href="{% url 'product_detail' prod.category.slug prod.slug %}">Детали</a></div>
+								</div>
+								
+								
+							</div>
+                            {% endfor %}
+
+							
+
+							<!-- Product Item -->
+						
+
+						</div>
+
+						<!-- Shop Page Navigation -->
+						<div class="shop_page_nav d-flex flex-row">
+                        
+							<ul class="page_nav d-flex flex-row">
+								{% if page_obj1.has_previous %}
+								<li><a href="?page={{ page_obj1.previous_page_number }}&query={{ request.GET.query }}"><i class="fas fa-chevron-left"></i></a></li>
+								{% endif %}
+								{% if page_obj.number|add:'-4' > 1 %}
+								<li><a href="?page={{ page_obj1.number|add:'-5' }}&query={{ request.GET.query }}">&hellip;</a></li>
+								{% endif %}
+	
+								{% for i in page_obj1.paginator.page_range %}
+								{% if page_obj1.number == i %}
+								<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								{% elif i > page_obj1.number|add:'-5' and i < page_obj1.number|add:'5' %}
+								<li><a href="?page={{ i }}&query={{ request.GET.query }}">{{ i }}</a></li>
+								{% endif %}
+								{% endfor %}
+	
+								{% if page_obj1.paginator.num_pages > page_obj1.number|add:'4' %}
+								<li><a href="?page={{ page_obj1.number|add:'5' }}&query={{ request.GET.query }}">&hellip;</a></li>
+								{% endif %}
+								{% if page_obj1.has_next %}
+								<li><a href="?page={{ page_obj1.next_page_number }}&query={{ request.GET.query }}"><i class="fas fa-chevron-right"></i></a></li>
+								{% endif %}
+							</ul>
+							
+						</div>
+
+					
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+  
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/shop_custom.js' %}"></script>
+
+
+
+    
+    
+   
+{% endblock %} 
